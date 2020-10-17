@@ -5,10 +5,12 @@
  */
 package com.example.SpringExample.Services;
 
+import com.example.SpringExample.Dao.UserServiceRegister;
 import com.example.SpringExample.Dao.UserServicesRepositry;
 import com.example.SpringExample.Entitys.UserEntity;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,7 @@ import org.springframework.stereotype.Service;
 public class ServiceHandler {
     @Autowired
 	private UserServicesRepositry userserviceimple;
+         
 	   UserEntity us=new UserEntity();
 //	List<User> list=new ArrayList<>();;
 	
@@ -76,6 +79,18 @@ public class ServiceHandler {
 			return "deleted";
 		}
 		
+                //user register data
+                public void userRegister(UserEntity us)
+                {
+                    try {
+                        
+                   userserviceimple.save(us);
+                        
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                 
+                }
     
     
     

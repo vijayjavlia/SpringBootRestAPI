@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title></title>
+       
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <form action="/register" method="POST" >
+                name:<input type="text" name="name"><br><!-- comment -->
+                 email:<input type="text" name="email"><br>
+                  password:<input type="text" name="password"><br>
+                   age:<input type="text" name="age"><br>
+                    address:<input type="text" name="address"><br>
+                    <input type="submit" value="Save">
+            </form>
+        </div>
+    </body>
+</html>

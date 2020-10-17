@@ -4,15 +4,12 @@
  * and open the template in the editor.
  */
 package com.example.SpringExample.MyRestController;
-
-import com.example.SpringExample.Dao.UserServicesRepositry;
 import com.example.SpringExample.Entitys.UserEntity;
 import com.example.SpringExample.Services.ServiceHandler;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,7 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -33,7 +32,7 @@ public class MyRestController {
     
     @Autowired
 	private ServiceHandler userServices;
-	
+   
 	// Get all data from database
 	@GetMapping("/user")	
 	public ResponseEntity<List<UserEntity>> getAllUser()
@@ -84,7 +83,16 @@ public class MyRestController {
 	return userServices.deleteUserById(id);
 	}
 	
-	
-	
-    
+//    @PostMapping("/file")
+//    	public ResponseEntity<String> fileUpload(@RequestParam("file") MultipartFile file)
+//        {
+//        return ResponseEntity.ok("hello okk");
+//    }
+        //consume rest Sace User register form
+        @PostMapping(path = "/register")
+        public String userSaveInDatabase(@RequestBody  UserEntity us)
+        {
+            userServices.userRegister(us);
+            return "okk";
+        }
 }
